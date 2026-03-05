@@ -1,28 +1,16 @@
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-]
 
-export default function GameBoard({ handleSelectSquare, turns }) {
-
-    const newBoard = initialGameBoard
-
-    for (const turn of turns) {
-        const { square, player } = turn;
-        const { row, cell } = square;
-        newBoard[row][cell] = player;
-    }
+export default function GameBoard({ handleSelectSquare, board }) {
 
     return (
         <ol id="game-board">
-            {newBoard.map((row, rowIndex) => (
+            {board.map((row, rowIndex) => (
                 <li key={rowIndex}>
                     <ol>
                         {row.map((cell, cellIndex) => (
                             <li key={cellIndex}>
                                 <button className="board-cell"
                                     onClick={() => handleSelectSquare(rowIndex, cellIndex)}
+                                    disabled={cell} // If cell is not null, disable the button
                                 >
                                     {cell}
                                 </button>

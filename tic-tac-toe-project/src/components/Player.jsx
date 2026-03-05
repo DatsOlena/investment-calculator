@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Player({ initialName, isActive }) {
+export default function Player({ initialName, isActive, symbol, onNameChange }) {
     const [isEditing, setIsEditing] = useState(false);
     const [playerName, setPlayerName] = useState(initialName);
 
@@ -10,9 +10,9 @@ export default function Player({ initialName, isActive }) {
 
     function handleChange(event) {
         setPlayerName(event.target.value)
+        onNameChange(symbol, event.target.value);
     }
 
-    const symbol = isActive ? "X" : "O";
 
     return (
         <li className={isActive ? "active" : undefined}>
