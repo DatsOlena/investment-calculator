@@ -87,14 +87,13 @@ function App() {
   return (
     <main>
       <div id="game-container">
-        <ol id="players">
-          <li>
-            <Player initialName="Player 1" isActive={activePlayer === "X"} symbol="X" onNameChange={handlePlayerNameChange} />
-          </li>
-          <li>
-            <Player initialName="Player 2" isActive={activePlayer === "O"} symbol="O" onNameChange={handlePlayerNameChange} />
-          </li>
-        </ol>
+        <div id="players" className="highlight-player">
+
+          <Player initialName="Player 1" isActive={activePlayer === "X"} symbol="X" onNameChange={handlePlayerNameChange} />
+
+          <Player initialName="Player 2" isActive={activePlayer === "O"} symbol="O" onNameChange={handlePlayerNameChange} />
+
+        </div>
         {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestart} />}
         <GameBoard handleSelectSquare={handleSelectSquare} board={gameBoard} />
       </div>

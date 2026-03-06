@@ -15,7 +15,7 @@ export default function Player({ initialName, isActive, symbol, onNameChange }) 
 
 
     return (
-        <li className={isActive ? "active" : undefined}>
+        <li className={`highlight-player ${isActive ? "active" : undefined}`}>
             <span className="player">
                 {isEditing ?
                     <input type="text" required
